@@ -2,107 +2,127 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Mi Reina 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Mi Reina 💖</title>
 
 <style>
     body {
         margin: 0;
         font-family: 'Segoe UI', cursive, sans-serif;
-        background: linear-gradient(135deg, #ffb6d9, #ffcce6, #ffd6f0);
+        background: linear-gradient(180deg, #ffb6d9, #ffcce6, #ffd6f0);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
         text-align: center;
         color: #8a004f;
-        overflow-x: hidden;
     }
 
-    header {
-        background-color: #ff69b4;
-        padding: 30px;
-        font-size: 42px;
-        color: white;
-        font-weight: bold;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .contenedor {
-        margin: 50px auto;
-        width: 85%;
-        max-width: 700px;
-        background: rgba(255, 255, 255, 0.85);
-        padding: 40px;
+    .tarjeta {
+        width: 90%;
+        max-width: 400px;
+        background: rgba(255,255,255,0.92);
+        padding: 30px 20px;
         border-radius: 25px;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        position: relative;
+        z-index: 2;
     }
 
-    h2 {
-        color: #ff1493;
-        margin-bottom: 15px;
+    h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 16px;
+        margin-bottom: 20px;
     }
 
     button {
-        background-color: #ff1493;
-        border: none;
-        padding: 15px 30px;
+        width: 100%;
+        padding: 15px;
         font-size: 18px;
+        background-color: #ff1493;
         color: white;
+        border: none;
         border-radius: 30px;
-        cursor: pointer;
         box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        cursor: pointer;
         transition: 0.3s;
     }
 
-    button:hover {
-        background-color: #ff69b4;
-        transform: scale(1.1);
+    button:active {
+        transform: scale(0.95);
     }
 
-    .corazones {
-        font-size: 28px;
-        margin-top: 20px;
-        animation: flotar 2s infinite alternate;
+    .mensaje {
+        margin-top: 15px;
+        font-size: 15px;
+        color: #d1006c;
+        display: none;
+        animation: aparecer 1s ease forwards;
+    }
+
+    @keyframes aparecer {
+        from {opacity: 0; transform: translateY(10px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    /* Corazones flotando */
+    .corazon {
+        position: absolute;
+        color: #ff69b4;
+        font-size: 20px;
+        animation: flotar 6s linear infinite;
+        opacity: 0.7;
     }
 
     @keyframes flotar {
-        from { transform: translateY(0); }
-        to { transform: translateY(-10px); }
-    }
-
-    footer {
-        margin-top: 50px;
-        padding: 15px;
-        background-color: #ff69b4;
-        color: white;
-        font-size: 14px;
+        from { transform: translateY(100vh) scale(0.5); }
+        to { transform: translateY(-10vh) scale(1.2); }
     }
 </style>
 </head>
 
 <body>
 
-<header>
-    Para Mi Reina Pepiada 💕
-</header>
+<div class="tarjeta">
+    <h1>💖 Para Mi Reina Pepiada 💖</h1>
+    <p>Presiona el botón y escucha esta canción especial 🎶</p>
 
-<div class="contenedor">
-    <h2>Presiona el botón 🎶</h2>
-    <p>Esta canción es para alguien muy especial 💖</p>
+    <button onclick="iniciarSorpresa()">▶ Reproducir canción</button>
 
-    <button onclick="reproducirMusica()">▶ Reproducir canción</button>
-
-    <div class="corazones">💗💖💞💓</div>
+    <div class="mensaje" id="mensaje">
+        Desde que llegaste todo es más bonito 💕✨
+    </div>
 </div>
 
-<footer>
-    Hecho con mucho amor 🌸
-</footer>
-
-<!-- Audio (pon tu canción con este nombre) -->
 <audio id="miCancion" src="cancion.mp3"></audio>
 
 <script>
-function reproducirMusica() {
+function iniciarSorpresa() {
     var audio = document.getElementById("miCancion");
     audio.play();
+    document.getElementById("mensaje").style.display = "block";
 }
+
+/* Crear corazones flotando */
+function crearCorazon() {
+    const corazon = document.createElement("div");
+    corazon.classList.add("corazon");
+    corazon.innerHTML = "💖";
+    corazon.style.left = Math.random() * 100 + "vw";
+    corazon.style.animationDuration = (Math.random() * 3 + 3) + "s";
+    document.body.appendChild(corazon);
+
+    setTimeout(() => {
+        corazon.remove();
+    }, 6000);
+}
+
+setInterval(crearCorazon, 500);
 </script>
 
 </body>

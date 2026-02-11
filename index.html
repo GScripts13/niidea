@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Mi Reina 💖</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', cursive, sans-serif;
+        background: linear-gradient(135deg, #ffb6d9, #ffcce6, #ffd6f0);
+        text-align: center;
+        color: #8a004f;
+        overflow-x: hidden;
+    }
+
+    header {
+        background-color: #ff69b4;
+        padding: 30px;
+        font-size: 42px;
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .contenedor {
+        margin: 50px auto;
+        width: 85%;
+        max-width: 700px;
+        background: rgba(255, 255, 255, 0.85);
+        padding: 40px;
+        border-radius: 25px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    h2 {
+        color: #ff1493;
+        margin-bottom: 15px;
+    }
+
+    button {
+        background-color: #ff1493;
+        border: none;
+        padding: 15px 30px;
+        font-size: 18px;
+        color: white;
+        border-radius: 30px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: 0.3s;
+    }
+
+    button:hover {
+        background-color: #ff69b4;
+        transform: scale(1.1);
+    }
+
+    .corazones {
+        font-size: 28px;
+        margin-top: 20px;
+        animation: flotar 2s infinite alternate;
+    }
+
+    @keyframes flotar {
+        from { transform: translateY(0); }
+        to { transform: translateY(-10px); }
+    }
+
+    footer {
+        margin-top: 50px;
+        padding: 15px;
+        background-color: #ff69b4;
+        color: white;
+        font-size: 14px;
+    }
+</style>
+</head>
+
+<body>
+
+<header>
+    Para Mi Reina Pepiada 💕
+</header>
+
+<div class="contenedor">
+    <h2>Presiona el botón 🎶</h2>
+    <p>Esta canción es para alguien muy especial 💖</p>
+
+    <button onclick="reproducirMusica()">▶ Reproducir canción</button>
+
+    <div class="corazones">💗💖💞💓</div>
+</div>
+
+<footer>
+    Hecho con mucho amor 🌸
+</footer>
+
+<!-- Audio (pon tu canción con este nombre) -->
+<audio id="miCancion" src="cancion.mp3"></audio>
+
+<script>
+function reproducirMusica() {
+    var audio = document.getElementById("miCancion");
+    audio.play();
+}
+</script>
+
+</body>
+</html>
